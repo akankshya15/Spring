@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/context 
+			http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+		<bean id="emp" class="beans.Employee" scope="prototype" init-method="start"
+									destroy-method="stop">
+		<property name="empno" value="123"></property>
+		<property name="ename" value="XYZ"></property>
+		<property name="skills" >
+			<list>
+				<value>java</value>
+				<value>oracle</value>
+				<value>spring</value>
+			</list>
+		</property>							
+		</bean>
+									
+		<bean id="std" class="beans.Student"> 
+			<constructor-arg name="regno" value="10000"></constructor-arg>
+			<constructor-arg name="name" value="Akankshya"></constructor-arg>
+			
+			
+			<property name="regno" value="123"></property>
+			<property name="name" value="Akankshya"></property>
+			<property name="addr" ref="addr"></property><!-- manual wiring-->
+		</bean>
+		<bean id="addr" class="beans.Address">
+		<property name="street" value="hitech city"></property>
+		<property name="city" value="Hyderabad"></property>
+		</bean> 
+</beans>
